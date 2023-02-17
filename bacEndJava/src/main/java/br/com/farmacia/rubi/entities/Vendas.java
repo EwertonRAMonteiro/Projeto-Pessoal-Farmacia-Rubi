@@ -41,7 +41,7 @@ public class Vendas {
             joinColumns = {@JoinColumn(name="produtos_id")},
             inverseJoinColumns = {@JoinColumn(name="vendas_id")}
     )
-    private List<Produtos> produtos;
+    private List<Produto> produtos;
 
 
 }

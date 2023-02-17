@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,27 +13,23 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Produtos {
+public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
 
-    @Column(name = "nome", nullable = false, length = 35)
+    @Column(name = "valor_venda", nullable = false)
+    private Float valorVenda;
+
+    @Column(name = "valor_compra", nullable = false)
+    private Float valorCompra;
+
+    @Column(name = "nome", nullable = false, length = 45)
     private String nome;
-
-    @Column(name = "quantidade", nullable = false)
-    private Integer quantidade;
-
-    @Column(name = "preco", nullable = false)
-    private Float preco;
 
     @Column(name = "tipo", nullable = false, length = 45)
     private String tipo;
-
-    @Column(name = "data_time", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataTime;
 
     @Column(name = "descricao", nullable = false, length = 45)
     private String descricao;
@@ -47,5 +43,8 @@ public class Produtos {
             CascadeType.ALL
     }, mappedBy = "produtos")
     List<Fornecedor> fornecedors;
+
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+    private List<Estoque> estoques = new ArrayList<Estoque>();
 
 }

@@ -4,11 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -35,7 +32,7 @@ public class Fornecedor {
     private String email;
 
     @Column(name = "cnpj", nullable = false, length = 14, unique = true)
-    private String cnpj;
+    private Integer cnpj;
 
     @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
     private List<EnderecoFor> enderecoFors = new ArrayList<EnderecoFor>();
@@ -43,11 +40,11 @@ public class Fornecedor {
     @ManyToMany(cascade = {
             CascadeType.ALL
     })
-    @JoinTable(name = "produtos_fornecedors",
-            joinColumns = {@JoinColumn(name="produtos_id")},
+    @JoinTable(name = "produto_fornecedor",
+            joinColumns = {@JoinColumn(name="produto_id")},
             inverseJoinColumns = {@JoinColumn(name="fornecedor_id")}
     )
-    private List<Produtos> produtos;
+    private List<Produto> produtos;
 
 
 }
