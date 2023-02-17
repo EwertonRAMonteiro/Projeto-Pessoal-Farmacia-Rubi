@@ -5,12 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
-@Table(name = "endereco_func")
+@Table(name = "endereco_for")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EnderecoFunc {
+public class EnderecoFor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -35,7 +37,6 @@ public class EnderecoFunc {
     private String uf;
 
     @ManyToOne
-    @JoinColumn(name = "funcionario_id")
-    private Funcionario funcionario;
-
+    @JoinColumn(name = "fornecedor_id")
+    private Fornecedor fornecedor;
 }

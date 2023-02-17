@@ -1,13 +1,16 @@
 package br.com.farmacia.rubi.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "funcionario")
@@ -18,7 +21,7 @@ public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private Integer id;
+    private Long id;
 
     @Column(name = "first_name", nullable = false, length = 25)
     private String firstName;
@@ -55,4 +58,9 @@ public class Funcionario {
     @Column(name = "data_time", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataTime;
+
+    @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
+    private List<EnderecoFunc> enderecoFuncs = new ArrayList<EnderecoFunc>();
+
+
 }
