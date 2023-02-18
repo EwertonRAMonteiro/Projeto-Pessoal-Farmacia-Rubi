@@ -1,9 +1,11 @@
 package br.com.farmacia.rubi.entities;
 
 
+import br.com.farmacia.rubi.dto.FuncionarioRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,6 +19,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Funcionario {
 
     @Id
@@ -61,6 +64,27 @@ public class Funcionario {
 
     @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
     private List<EnderecoFunc> enderecoFuncs = new ArrayList<EnderecoFunc>();
+
+    public Funcionario(Long id){
+        this.id = id;
+    }
+
+    public static Funcionario of(FuncionarioRequest request) {
+        return Funcionario
+                .builder()
+                .firstName(request.getFirstName())
+                .midName(request.getMidName())
+                .lastName(request.getLastName())
+                .cpf(request.getCpf())
+                .telefone(request.getTelefone())
+                .credencial(request.getCredencial())
+                .dataNasc(request.getDataNasc())
+                .dataTime(request.getDataTime())
+                .funcao(request.getFuncao())
+                .email(request.getEmail())
+                .salario(request.getSalario())
+                .build();
+    }
 
 
 }
