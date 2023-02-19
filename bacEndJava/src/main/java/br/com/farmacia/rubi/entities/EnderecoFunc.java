@@ -1,7 +1,9 @@
 package br.com.farmacia.rubi.entities;
 
+import br.com.farmacia.rubi.dto.EnderecoFuncRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class EnderecoFunc {
 
     @Id
@@ -37,5 +40,19 @@ public class EnderecoFunc {
     @ManyToOne
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
+
+    public EnderecoFunc (Long id) {this.id = id;}
+
+    public static EnderecoFunc of(EnderecoFuncRequest request) {
+        return EnderecoFunc
+                .builder()
+                .rua(request.getRua())
+                .numero(request.getNumero())
+                .bairro(request.getBairro())
+                .cidade(request.getCidade())
+                .cep(request.getCep())
+                .uf(request.getUf())
+                .build();
+    }
 
 }
