@@ -1,7 +1,9 @@
 package br.com.farmacia.rubi.entities;
 
+import br.com.farmacia.rubi.dto.EnderecoForRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class EnderecoFor {
 
     @Id
@@ -39,4 +42,18 @@ public class EnderecoFor {
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
+
+    public EnderecoFor(Long id) {this.id = id;}
+
+    public static EnderecoFor of(EnderecoForRequest request) {
+        return EnderecoFor
+                .builder()
+                .rua(request.getRua())
+                .numero(request.getNumero())
+                .bairro(request.getBairro())
+                .cidade(request.getCidade())
+                .cep(request.getCep())
+                .uf(request.getUf())
+                .build();
+    }
 }
