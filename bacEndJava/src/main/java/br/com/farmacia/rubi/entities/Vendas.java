@@ -21,6 +21,7 @@ public class Vendas {
     private Long id;
 
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "forma_pag", nullable = false)
     private VendasEnum formaPag;
 
