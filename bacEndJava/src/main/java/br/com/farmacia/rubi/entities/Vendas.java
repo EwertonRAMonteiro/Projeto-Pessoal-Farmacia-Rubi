@@ -1,8 +1,10 @@
 package br.com.farmacia.rubi.entities;
 
+import br.com.farmacia.rubi.dto.VendasRequest;
 import br.com.farmacia.rubi.unums.VendasEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Vendas {
 
     @Id
@@ -43,6 +46,16 @@ public class Vendas {
             inverseJoinColumns = {@JoinColumn(name="vendas_id")}
     )
     private List<Produto> produtos;
+
+    public Vendas of(VendasRequest request) {
+        return Vendas
+                .builder()
+                .formaPag(request.getFormaPag())
+                .dataComp(request.getDataComp())
+                .vendedor(request.getVendedor())
+                .valorTotal(request.getValorTotal())
+                .build();
+    }
 
 
 }
