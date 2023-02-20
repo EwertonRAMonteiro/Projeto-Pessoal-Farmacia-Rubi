@@ -1,7 +1,9 @@
 package br.com.farmacia.rubi.entities;
 
+import br.com.farmacia.rubi.dto.FornecedorRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Fornecedor {
 
     @Id
@@ -46,5 +49,17 @@ public class Fornecedor {
     )
     private List<Produto> produtos;
 
+    public Fornecedor(Long id) {this.id = id;}
+
+    public static Fornecedor of(FornecedorRequest request) {
+        return Fornecedor
+                .builder()
+                .nomeFantasia(request.getNomeFantasia())
+                .razaoSocial(request.getRazaoSocial())
+                .telefone(request.getTelefone())
+                .cnpj(request.getCnpj())
+                .email(request.getEmail())
+                .build();
+    }
 
 }
