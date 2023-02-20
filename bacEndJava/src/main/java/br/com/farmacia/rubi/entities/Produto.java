@@ -1,7 +1,9 @@
 package br.com.farmacia.rubi.entities;
 
+import br.com.farmacia.rubi.dto.ProdutoRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +15,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Produto {
 
     @Id
@@ -46,5 +49,18 @@ public class Produto {
 
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<Estoque> estoques = new ArrayList<Estoque>();
+
+    public Produto(Long id) {this.id =id;}
+
+    public static Produto of(ProdutoRequest request) {
+        return Produto
+                .builder()
+                .valorCompra(request.getValorCompra())
+                .valorVenda(request.getValorVenda())
+                .nome(request.getNome())
+                .descricao(request.getDescricao())
+                .tipo(request.getTipo())
+                .build();
+    }
 
 }
