@@ -1,7 +1,9 @@
 package br.com.farmacia.rubi.entities;
 
+import br.com.farmacia.rubi.dto.EstoqueRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +14,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -34,6 +37,15 @@ public class Estoque {
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
+    public Estoque(Long id) {this.id = id;}
 
+    public  static Estoque of(EstoqueRequest request) {
+        return Estoque
+                .builder()
+                .qntEntrada(request.getQntEntrada())
+                .qntSaida(request.getQntSaida())
+                .dataTime(request.getDataTime())
+                .build();
+    }
 
 }
