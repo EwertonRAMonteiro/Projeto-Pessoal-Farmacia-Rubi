@@ -18,9 +18,7 @@ public class VendasRequest {
 
     private Float valorTotal;
 
-
     private Date dataComp;
-
 
     private Byte vendedor;
 }
