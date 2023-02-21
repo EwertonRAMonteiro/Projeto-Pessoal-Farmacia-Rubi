@@ -31,7 +31,7 @@ public class EnderecoFunc {
     @Column(name = "cidade", nullable = false, length = 30)
     private String cidade;
 
-    @Column(name = "cep", nullable = false, length = 8)
+    @Column(name = "cep", nullable = false, length = 9)
     private String cep;
 
     @Column(name = "uf", nullable = false, length = 25)
@@ -52,6 +52,7 @@ public class EnderecoFunc {
                 .cidade(request.getCidade())
                 .cep(request.getCep())
                 .uf(request.getUf())
+                .funcionario(new Funcionario(request.getFuncionarioId()))
                 .build();
     }
 
