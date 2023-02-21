@@ -26,13 +26,13 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
 
-    @Column(name = "first_name", nullable = false, length = 25)
+    @Column(name = "first_name", nullable = false, length = 30)
     private String firstName;
 
-    @Column(name = "mid_name", nullable = true, length = 25)
+    @Column(name = "mid_name", nullable = true, length = 30)
     private String midName;
 
-    @Column(name = "last_name", nullable = false, length = 25)
+    @Column(name = "last_name", nullable = false, length = 30)
     private String lastName;
 
     @Column(name = "data_nascimento", nullable = false)
@@ -43,13 +43,13 @@ public class Funcionario {
     @Column(name = "email", nullable = false, length = 45, unique = true)
     private String email;
 
-    @Column(name = "telefone", nullable = false, length = 50)
+    @Column(name = "telefone", nullable = false, length = 14)
     private Integer telefone;
 
     @Column(name = "salario", nullable = false)
     private Float salario;
 
-    @Column(name = "funcao", nullable = false)
+    @Column(name = "funcao", nullable = false, length = (25))
     private String funcao;
 
     @Column(name = "credencial", nullable = false, unique = true)
@@ -62,8 +62,9 @@ public class Funcionario {
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataTime;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "funcionario", cascade = CascadeType.ALL)
-    private List<EnderecoFunc> enderecoFuncs = new ArrayList<EnderecoFunc>();
+    private List<EnderecoFunc> enderecoFuncs;
 
     public Funcionario(Long id){
         this.id = id;
