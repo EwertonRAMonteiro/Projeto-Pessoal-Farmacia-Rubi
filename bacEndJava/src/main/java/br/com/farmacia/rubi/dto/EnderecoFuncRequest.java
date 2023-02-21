@@ -22,4 +22,5 @@ public class EnderecoFuncRequest {
 
     private String uf;
 
+    private Long funcionarioId;
 }
