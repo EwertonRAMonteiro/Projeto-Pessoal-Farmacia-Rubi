@@ -54,6 +54,7 @@ public class EnderecoFor {
                 .cidade(request.getCidade())
                 .cep(request.getCep())
                 .uf(request.getUf())
+                .fornecedor(new Fornecedor(request.getFornecedorId()))
                 .build();
     }
 }

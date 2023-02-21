@@ -14,14 +14,14 @@ import java.util.Map;
 
 
 @CrossOrigin(origins = "*")
-@RequestMapping("/farmaciarubi")
+@RequestMapping("farmaciarubi")
 @RestController
 public class FuncionarioController {
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
-    @GetMapping("/funcionarios")
+    @GetMapping("funcionarios")
     public List<Funcionario> getAllFuncionarios(){
         return funcionarioRepository.findAll();
     }
@@ -30,6 +30,7 @@ public class FuncionarioController {
     public ResponseEntity<Funcionario> getFuncionarioById(@PathVariable Long id) {
         Funcionario funcionario = funcionarioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("funcionario inexistente"));
+
         return ResponseEntity.ok(funcionario);
     }
 
@@ -57,6 +58,7 @@ public class FuncionarioController {
 
         funcionarioRepository.delete(funcionario);
         Map<String, Boolean> response = new HashMap<>();
+        response.put("funcionario deletado", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
 

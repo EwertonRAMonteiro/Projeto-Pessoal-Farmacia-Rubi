@@ -29,7 +29,7 @@ public class EnderecoFuncController {
     public List<EnderecoFunc> getAllEnderecosFunc() {return enderecoFunRepositoy.findAll();}
 
     @GetMapping("funcionarios/enderecos/{id}")
-    public ResponseEntity<EnderecoFunc> getEnderecosFuncById(@PathVariable Long id){
+    public ResponseEntity<EnderecoFunc> findEnderecosFuncById(@PathVariable Long id){
         EnderecoFunc enderecoFunc = enderecoFunRepositoy.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Endereco Inexistente"));
         return ResponseEntity.ok(enderecoFunc);

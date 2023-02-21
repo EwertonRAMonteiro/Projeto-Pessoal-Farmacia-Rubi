@@ -20,4 +20,6 @@ public class EnderecoForRequest {
     private String cep;
 
     private String uf;
+
+    private Long fornecedorId;
 }
