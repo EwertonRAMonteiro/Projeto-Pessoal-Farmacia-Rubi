@@ -2,8 +2,10 @@ package br.com.farmacia.rubi.controllers;
 
 import br.com.farmacia.rubi.ResourceNotFoundException;
 import br.com.farmacia.rubi.dto.FuncionarioRequest;
+import br.com.farmacia.rubi.dto.FuncionarioResponse;
 import br.com.farmacia.rubi.entities.Funcionario;
 import br.com.farmacia.rubi.repositories.FuncionarioRepository;
+import br.com.farmacia.rubi.services.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,18 +23,25 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
+    @Autowired
+    private FuncionarioService service;
+
+    @GetMapping("funcionarios/{id}")
+    public FuncionarioResponse findById(@PathVariable Long id){
+        return  service.findById(id);
+    }
     @GetMapping("funcionarios")
     public List<Funcionario> getAllFuncionarios(){
         return funcionarioRepository.findAll();
     }
 
-    @GetMapping("funcionarios/{id}")
-    public ResponseEntity<Funcionario> getFuncionarioById(@PathVariable Long id) {
-        Funcionario funcionario = funcionarioRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("funcionario inexistente"));
-
-        return ResponseEntity.ok(funcionario);
-    }
+//    @GetMapping("funcionarios/{id}")
+//    public ResponseEntity<Funcionario> getFuncionarioById(@PathVariable Long id) {
+//        Funcionario funcionario = funcionarioRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("funcionario inexistente"));
+//
+//        return ResponseEntity.ok(funcionario);
+//    }
 
     @PostMapping("funcionarios")
     public Funcionario createFuncionario(@RequestBody FuncionarioRequest request) {
