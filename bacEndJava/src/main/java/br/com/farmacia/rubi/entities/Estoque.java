@@ -45,6 +45,7 @@ public class Estoque {
                 .qntEntrada(request.getQntEntrada())
                 .qntSaida(request.getQntSaida())
                 .dataTime(request.getDataTime())
+                .produto(new Produto(request.getProdutosId()))
                 .build();
     }
 

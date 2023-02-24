@@ -2,9 +2,11 @@ package br.com.farmacia.rubi.controllers;
 
 import br.com.farmacia.rubi.ResourceNotFoundException;
 import br.com.farmacia.rubi.dto.EnderecoForRequest;
+import br.com.farmacia.rubi.dto.EnderecoForResponse;
 import br.com.farmacia.rubi.entities.EnderecoFor;
 import br.com.farmacia.rubi.repositories.EnderecoForRepository;
 import br.com.farmacia.rubi.repositories.FornecedorRepository;
+import br.com.farmacia.rubi.services.EnderecoForService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,9 @@ public class EnderecoForControllers {
     @Autowired
     private FornecedorRepository fornecedorRepository;
 
+
+    private EnderecoForService service;
+
     @GetMapping("fornecedores/enderecos")
     public List<EnderecoFor> getAllEnderecos(){return enderecoForRepository.findAll();}
 
@@ -33,6 +38,11 @@ public class EnderecoForControllers {
                 .orElseThrow(() -> new ResourceNotFoundException("Endereco Inexistente"));
         return ResponseEntity.ok(enderecoFor);
     }
+
+//    @GetMapping("fornecedores/enderecos/{id}")
+//    public EnderecoForResponse findById(@PathVariable Long id){
+//        return service.findById(id);
+//    }
 
     @GetMapping("fornecedores/enderecos/lista/{id}")
     public ResponseEntity<List<EnderecoFor>> listAllenderecosOfFornecedor(@PathVariable("id") Long id){

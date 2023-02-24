@@ -1,5 +1,6 @@
 package br.com.farmacia.rubi.dto;
 
+import br.com.farmacia.rubi.entities.Vendas;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +19,6 @@ public class EstoqueRequest {
     private Integer qntTotal;
 
     private Date dataTime;
+
+    private Long produtosId;
 }

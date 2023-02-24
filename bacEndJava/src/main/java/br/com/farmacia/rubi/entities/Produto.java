@@ -40,12 +40,16 @@ public class Produto {
     @ManyToMany(cascade = {
             CascadeType.ALL
     }, mappedBy = "produtos")
-    List<Vendas> vendas;
+    private List<Vendas> vendas;
 
-    @ManyToMany(cascade = {
-            CascadeType.ALL
-    }, mappedBy = "produtos")
-    List<Fornecedor> fornecedors;
+    @ManyToMany()
+    @JoinTable(
+            name = "produto_fornecedor",
+            uniqueConstraints = @UniqueConstraint(columnNames = {"fornecedor_id","produto_id"}),
+            joinColumns = @JoinColumn(name = "fornecedor_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id")
+    )
+    private List<Fornecedor> fornecedors;
 
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<Estoque> estoques = new ArrayList<Estoque>();

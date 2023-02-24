@@ -1,6 +1,7 @@
 package br.com.farmacia.rubi.entities;
 
 import br.com.farmacia.rubi.dto.EnderecoForRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,7 +40,8 @@ public class EnderecoFor {
     @Column(name = "uf", nullable = false, length = 25)
     private String uf;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 

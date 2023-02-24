@@ -1,6 +1,7 @@
 package br.com.farmacia.rubi.entities;
 
 import br.com.farmacia.rubi.dto.FornecedorRequest;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,15 +38,17 @@ public class Fornecedor {
     @Column(name = "cnpj", nullable = false, length = 14, unique = true)
     private Integer cnpj;
 
-    @OneToMany(mappedBy = "fornecedor", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @OneToMany(mappedBy = "fornecedor", fetch = FetchType.LAZY)
     private List<EnderecoFor> enderecoFors = new ArrayList<EnderecoFor>();
 
-    @ManyToMany(cascade = {
-            CascadeType.ALL
-    })
-    @JoinTable(name = "produto_fornecedor",
-            joinColumns = {@JoinColumn(name="produto_id")},
-            inverseJoinColumns = {@JoinColumn(name="fornecedor_id")}
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "fornecedor_produtos",
+            uniqueConstraints = @UniqueConstraint(columnNames = {"fornecedor_id","produto_id"}),
+            joinColumns = @JoinColumn(name = "fornecedor_id"),
+            inverseJoinColumns = @JoinColumn (name = "produto_id")
     )
     private List<Produto> produtos;
 
