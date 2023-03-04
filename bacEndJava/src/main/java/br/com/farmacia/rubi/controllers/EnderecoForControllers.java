@@ -1,8 +1,9 @@
 package br.com.farmacia.rubi.controllers;
 
 import br.com.farmacia.rubi.ResourceNotFoundException;
-import br.com.farmacia.rubi.dto.EnderecoForRequest;
-import br.com.farmacia.rubi.dto.EnderecoForResponse;
+import br.com.farmacia.rubi.dto.request.EnderecoForRequest;
+import br.com.farmacia.rubi.dto.response.EnderecoForResponse;
+import br.com.farmacia.rubi.dto.response.EnderecoFuncResponse;
 import br.com.farmacia.rubi.entities.EnderecoFor;
 import br.com.farmacia.rubi.repositories.EnderecoForRepository;
 import br.com.farmacia.rubi.repositories.FornecedorRepository;
@@ -26,23 +27,28 @@ public class EnderecoForControllers {
     @Autowired
     private FornecedorRepository fornecedorRepository;
 
-
     private EnderecoForService service;
 
     @GetMapping("fornecedores/enderecos")
     public List<EnderecoFor> getAllEnderecos(){return enderecoForRepository.findAll();}
 
-    @GetMapping("fornecedores/enderecos/{id}")
-    public ResponseEntity<EnderecoFor> findEnderecoById(@PathVariable Long id){
-        EnderecoFor enderecoFor = enderecoForRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Endereco Inexistente"));
-        return ResponseEntity.ok(enderecoFor);
-    }
+//    @GetMapping("fornecedores/enderecos/{id}")
+//    public ResponseEntity<EnderecoFor> findEnderecoById(@PathVariable Long id){
+//        EnderecoFor enderecoFor = enderecoForRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("Endereco Inexistente"));
+//        return ResponseEntity.ok(enderecoFor);
+//    }
 
 //    @GetMapping("fornecedores/enderecos/{id}")
 //    public EnderecoForResponse findById(@PathVariable Long id){
-//        return service.findById(id);
+//        EnderecoForResponse response = service.findById(id);
+//        return response;
 //    }
+
+
+    @GetMapping("fornecedores/enderecos/{id}")
+    public EnderecoForResponse findById(@PathVariable Long id){ return service.findById(id);
+    }
 
     @GetMapping("fornecedores/enderecos/lista/{id}")
     public ResponseEntity<List<EnderecoFor>> listAllenderecosOfFornecedor(@PathVariable("id") Long id){

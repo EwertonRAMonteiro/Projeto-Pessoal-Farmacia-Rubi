@@ -1,6 +1,6 @@
 package br.com.farmacia.rubi.entities;
 
-import br.com.farmacia.rubi.dto.EstoqueRequest;
+import br.com.farmacia.rubi.dto.request.EstoqueRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

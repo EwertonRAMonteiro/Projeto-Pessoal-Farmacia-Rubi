@@ -1,6 +1,6 @@
 package br.com.farmacia.rubi.services;
 
-import br.com.farmacia.rubi.dto.FuncionarioResponse;
+import br.com.farmacia.rubi.dto.response.FuncionarioResponse;
 import br.com.farmacia.rubi.entities.Funcionario;
 import br.com.farmacia.rubi.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;

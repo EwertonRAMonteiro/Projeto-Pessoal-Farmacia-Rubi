@@ -2,9 +2,9 @@ package br.com.farmacia.rubi.controllers;
 
 
 import br.com.farmacia.rubi.ResourceNotFoundException;
-import br.com.farmacia.rubi.dto.EnderecoFuncRequest;
+import br.com.farmacia.rubi.dto.request.EnderecoFuncRequest;
 import br.com.farmacia.rubi.entities.EnderecoFunc;
-import br.com.farmacia.rubi.repositories.EnderecoFunRepositoy;
+import br.com.farmacia.rubi.repositories.EnderecoFuncRepositoy;
 import br.com.farmacia.rubi.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class EnderecoFuncController {
 
     @Autowired
-    private EnderecoFunRepositoy enderecoFunRepositoy;
+    private EnderecoFuncRepositoy enderecoFunRepositoy;
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;

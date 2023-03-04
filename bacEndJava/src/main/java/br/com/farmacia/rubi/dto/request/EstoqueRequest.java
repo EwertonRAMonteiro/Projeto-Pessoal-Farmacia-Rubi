@@ -1,4 +1,4 @@
-package br.com.farmacia.rubi.dto;
+package br.com.farmacia.rubi.dto.request;
 
 import br.com.farmacia.rubi.entities.Vendas;
 import lombok.AllArgsConstructor;

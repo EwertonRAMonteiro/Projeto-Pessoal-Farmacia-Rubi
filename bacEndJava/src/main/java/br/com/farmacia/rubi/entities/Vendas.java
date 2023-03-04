@@ -1,6 +1,6 @@
 package br.com.farmacia.rubi.entities;
 
-import br.com.farmacia.rubi.dto.VendasRequest;
+import br.com.farmacia.rubi.dto.request.VendasRequest;
 import br.com.farmacia.rubi.unums.VendasEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

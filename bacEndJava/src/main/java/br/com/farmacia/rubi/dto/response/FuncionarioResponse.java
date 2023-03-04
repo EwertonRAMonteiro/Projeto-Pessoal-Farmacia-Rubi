@@ -1,4 +1,4 @@
-package br.com.farmacia.rubi.dto;
+package br.com.farmacia.rubi.dto.response;
 
 import br.com.farmacia.rubi.entities.Funcionario;
 import jakarta.persistence.Temporal;

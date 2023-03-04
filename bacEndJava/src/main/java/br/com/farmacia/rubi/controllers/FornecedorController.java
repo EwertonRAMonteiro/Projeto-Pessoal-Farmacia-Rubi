@@ -1,7 +1,7 @@
 package br.com.farmacia.rubi.controllers;
 
 import br.com.farmacia.rubi.ResourceNotFoundException;
-import br.com.farmacia.rubi.dto.FornecedorRequest;
+import br.com.farmacia.rubi.dto.request.FornecedorRequest;
 import br.com.farmacia.rubi.entities.Fornecedor;
 import br.com.farmacia.rubi.repositories.FornecedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

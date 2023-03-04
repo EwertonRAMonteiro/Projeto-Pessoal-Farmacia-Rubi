@@ -1,6 +1,6 @@
 package br.com.farmacia.rubi.services;
 
-import br.com.farmacia.rubi.dto.EnderecoForResponse;
+import br.com.farmacia.rubi.dto.response.EnderecoForResponse;
 import br.com.farmacia.rubi.entities.EnderecoFor;
 import br.com.farmacia.rubi.repositories.EnderecoForRepository;
 import org.springframework.beans.factory.annotation.Autowired;

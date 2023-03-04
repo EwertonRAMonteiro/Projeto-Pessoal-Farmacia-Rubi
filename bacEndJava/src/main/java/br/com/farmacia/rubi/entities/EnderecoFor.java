@@ -1,14 +1,12 @@
 package br.com.farmacia.rubi.entities;
 
-import br.com.farmacia.rubi.dto.EnderecoForRequest;
+import br.com.farmacia.rubi.dto.request.EnderecoForRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Table(name = "endereco_for")

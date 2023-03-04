@@ -1,6 +1,6 @@
 package br.com.farmacia.rubi.entities;
 
-import br.com.farmacia.rubi.dto.FornecedorRequest;
+import br.com.farmacia.rubi.dto.request.FornecedorRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

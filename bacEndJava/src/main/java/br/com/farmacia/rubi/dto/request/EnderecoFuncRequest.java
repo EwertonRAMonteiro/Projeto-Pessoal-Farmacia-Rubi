@@ -1,6 +1,5 @@
-package br.com.farmacia.rubi.dto;
+package br.com.farmacia.rubi.dto.request;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EnderecoForRequest {
+public class EnderecoFuncRequest {
+
+
     private String rua;
 
     private Short numero;
@@ -21,5 +22,5 @@ public class EnderecoForRequest {
 
     private String uf;
 
-    private Long fornecedorId;
+    private Long funcionarioId;
 }

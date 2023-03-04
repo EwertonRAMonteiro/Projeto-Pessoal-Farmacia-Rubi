@@ -1,7 +1,7 @@
 package br.com.farmacia.rubi.entities;
 
 
-import br.com.farmacia.rubi.dto.FuncionarioRequest;
+import br.com.farmacia.rubi.dto.request.FuncionarioRequest;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,8 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

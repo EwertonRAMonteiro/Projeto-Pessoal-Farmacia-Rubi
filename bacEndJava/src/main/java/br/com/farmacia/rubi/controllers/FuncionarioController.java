@@ -1,8 +1,8 @@
 package br.com.farmacia.rubi.controllers;
 
 import br.com.farmacia.rubi.ResourceNotFoundException;
-import br.com.farmacia.rubi.dto.FuncionarioRequest;
-import br.com.farmacia.rubi.dto.FuncionarioResponse;
+import br.com.farmacia.rubi.dto.request.FuncionarioRequest;
+import br.com.farmacia.rubi.dto.response.FuncionarioResponse;
 import br.com.farmacia.rubi.entities.Funcionario;
 import br.com.farmacia.rubi.repositories.FuncionarioRepository;
 import br.com.farmacia.rubi.services.FuncionarioService;
