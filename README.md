@@ -1,2 +1,2 @@
 # Projeto-Pessoal-Farmacia-Rubi
-projeto pessoal, para aplicar conmhecimentos adiquiridos em 8 meses de estudo em java
+projeto pessoal, para aplicar conmhecimentos em fullstack em java e angular, projeto sendo desenvolvido aos poucos devido aos estudos
