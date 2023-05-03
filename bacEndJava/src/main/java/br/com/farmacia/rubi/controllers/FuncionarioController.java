@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 
 @CrossOrigin(origins = "*")
@@ -28,7 +29,13 @@ public class FuncionarioController {
 
     @GetMapping("funcionarios/{id}")
     public FuncionarioResponse findById(@PathVariable Long id){
-        return  service.findById(id);
+        try {
+            return  service.findById(id);
+        } catch (NoSuchElementException e){
+            System.out.println("Funcionario inexistente error: " + e.getMessage());
+            return null;
+        }
+
     }
     @GetMapping("funcionarios")
     public List<Funcionario> getAllFuncionarios(){
