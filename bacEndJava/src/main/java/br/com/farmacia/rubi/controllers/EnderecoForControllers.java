@@ -11,7 +11,9 @@ import br.com.farmacia.rubi.services.EnderecoForService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.webjars.NotFoundException;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,8 +49,8 @@ public class EnderecoForControllers {
 
 
     @GetMapping("fornecedores/enderecos/{id}")
-    public EnderecoForResponse findById(@PathVariable Long id){ return service.findById(id);
-    }
+    public EnderecoForResponse findById(@PathVariable Long id){return service.findById(id);}
+
 
     @GetMapping("fornecedores/enderecos/lista/{id}")
     public ResponseEntity<List<EnderecoFor>> listAllenderecosOfFornecedor(@PathVariable("id") Long id){
