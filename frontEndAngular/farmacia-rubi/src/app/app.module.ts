@@ -13,6 +13,7 @@ import { VendasComponent } from './pages/vendas/vendas.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +24,6 @@ import { VendasComponent } from './pages/vendas/vendas.component';
     FornecedoresComponent,
     EstoqueComponent,
     VendasComponent,
-
-
   ],
   imports: [
     BrowserModule,
